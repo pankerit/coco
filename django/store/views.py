@@ -1,8 +1,16 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 from .models import Shoes
+from rest_framework import viewsets
+from .serializers import ShoesSerializer
 
 # Create your views here.
+# class ShoesView(viewsets.ReadOnlyModelViewSet)
+class ShoesView(viewsets.ModelViewSet):
+	queryset = Shoes.objects.all()
+	serializer_class =ShoesSerializer
+
+
 def home(request):
 	
 	return render(request, 'home.html')
