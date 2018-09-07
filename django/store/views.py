@@ -8,7 +8,7 @@ def home(request):
 	return render(request, 'home.html')
 
 def shoes(request):
-	shoes = Shoes.objects.all()
+	shoes_list = Shoes.objects.all()
 
 	return render(request, 'catalog.html', locals())
 
