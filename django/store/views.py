@@ -16,7 +16,7 @@ def home(request):
 	return render(request, 'home.html')
 
 def shoes(request):
-	shoes_list = Shoes.objects.all()
+	shoes_list = Shoes.objects.all()[:100]
 
 	return render(request, 'catalog.html', locals())
 

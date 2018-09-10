@@ -337,6 +337,12 @@ a, a:link, a:visited {
     font-weight: 600;
     text-transform: uppercase; }
 
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 1rem; }
+
 .productBox {
   box-sizing: border-box;
   word-wrap: break-word;
@@ -405,6 +411,46 @@ a, a:link, a:visited {
       margin-left: 2rem;
       color: #787878;
       font-size: 1.4rem; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem; }
+  .pagination__arrow {
+    width: 2rem;
+    height: 2rem;
+    fill: #787878; }
+    .pagination__arrow.prev svg {
+      transform: rotate(180deg);
+      transform-origin: center; }
+  .pagination .pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .pagination .page {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #787878;
+    width: 35px;
+    height: 36px;
+    border: 2px solid #ededed;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none; }
+    .pagination .page:hover {
+      background-color: #ededed; }
+    .pagination .page.show {
+      display: flex; }
+    .pagination .page.active {
+      background-color: #f85c5e;
+      color: #ffffff; }
 
 *,
 *::after,
