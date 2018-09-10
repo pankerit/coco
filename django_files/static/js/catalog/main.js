@@ -6,6 +6,13 @@ $(function() {
         $(this).toggleClass('active');
         $(this).next().toggleClass('collaps');
     });
+    $('.menu__brandCheckBox').on('click', function() {
+        $(this).toggleClass('active');
+    });
+
+    $('.menu__size').on('click', function() {
+        $(this).toggleClass('active');
+    });
 
     
 
