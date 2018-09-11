@@ -32,7 +32,7 @@ class Shoes(models.Model):
 # 	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
 # 	image = models.FileField()
 
-# class Shoes_size(models.Model):
-# 	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
-# 	size  = models.CharField(max_length=15)
-# 	stock = models.BooleanField()
+class Shoes_size(models.Model):
+	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
+	size  = models.CharField(max_length=15)
+	stock = models.BooleanField()

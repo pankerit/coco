@@ -14,7 +14,6 @@ $(function() {
         $(this).toggleClass('active');
     });
 
-    
 
     // const productsNum = 2001;
     // const numPerpage = 100; 

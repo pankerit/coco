@@ -5,6 +5,17 @@ $(() =>{
     // get data from server
     const json = getJson().responseJSON;
     const productsNum = json.length;
+    let productsBrand = [];
+    let productsSize = [];
+    getBrand(productsBrand, json)
+    // getSize(productsSize, json)
+
+    // create funtion
+
+    // stop
+    
+        
+    
     const numPerpage = 100; 
     viewOnPage(getDataFromPage(json))
 
@@ -90,7 +101,38 @@ function viewOnPage(shoes_list){
     })
     $('.row .products').html(output);
 
-} 
+}
+// show on page all brands
+function getBrand(productsBrand, json){
+    json.forEach((el) => {
+        if (!productsBrand.includes(el.brand)) {
+            productsBrand.push(el.brand)
+        }
+    });
+    productsBrand.sort((a, b) => a.localeCompare(b))
+    productsBrand.forEach(el => {
+        $('.menu__brandsBox').append(`
+        <div class="menu__brandElement">
+            <div class="menu__brandCheckBox"></div>
+            <div class="menu__brandName">${el}</div>
+        </div>
+        `)
+    })
+}
+// show on page all sizes
+// function getSize(productsSize, json){
+//     json.forEach((el) => {
+//         if (!productsSize.includes(el.Size)) {
+//             productsSize.push(el.Size)
+//         }
+//     });
+//     productsSize.sort((a, b) => a.localeCompare(b))
+//     productsSize.forEach(el => {
+//         $('.menu__sizeBox').append(`
+//         <div class="menu__size">${el}</div>
+//         `)
+//     })
+// }
 
 
 
