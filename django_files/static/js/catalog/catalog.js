@@ -1,17 +1,20 @@
 $(() =>{
+    const shoes = 'http://127.0.0.1:8000/shoes/api/shoes/'
+    const shoes_size = 'http://127.0.0.1:8000/shoes/api/shoes_size/'
     const next = $('.pagination__arrow.next')
     const prev = $('.pagination__arrow.prev')
     const showPages = 7;
     // get data from server
-    const json = getJson().responseJSON;
+    const json = getJson(shoes).responseJSON;
+    // const jsonShos_size  = getJson(shoes_size).responseJSON;
     const productsNum = json.length;
     let productsBrand = [];
-    let productsSize = [];
+    // let productsSize = [];
     getBrand(productsBrand, json)
-    // getSize(productsSize, json)
+    // getSize(jsonShos_size)
 
     // create funtion
-
+    
     // stop
     
         
@@ -120,26 +123,25 @@ function getBrand(productsBrand, json){
     })
 }
 // show on page all sizes
-// function getSize(productsSize, json){
-//     json.forEach((el) => {
-//         if (!productsSize.includes(el.Size)) {
-//             productsSize.push(el.Size)
+// function getSize(jsonShos_size){
+//     let productsSize = [];
+//     jsonShos_size.forEach((el) => {
+//         if (el.stock) {
+//             if (!productsSize.includes(el.size)) productsSize.push(el.size)
 //         }
 //     });
-//     productsSize.sort((a, b) => a.localeCompare(b))
+//     productsSize.sort()
 //     productsSize.forEach(el => {
-//         $('.menu__sizeBox').append(`
-//         <div class="menu__size">${el}</div>
-//         `)
+//         $('.menu__sizeBox').append(`<div class="menu__size">${el}</div>`)
 //     })
 // }
 
 
 
 
-function getJson() {
+function getJson(url) {
     return $.ajax({
-        url: 'http://127.0.0.1:8000/shoes/api/shoes/',
+        url: url,
         async:false,
         success: function(data) {
             return data;

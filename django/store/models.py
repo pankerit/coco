@@ -1,7 +1,6 @@
 from django.db import models
-
+from django.contrib.postgres.fields import JSONField
 # Create your models here.
-from django.db import models
 # from django.template.defaultfilters import slugify
 
 class Shoes(models.Model):
@@ -14,6 +13,9 @@ class Shoes(models.Model):
 	price			= models.DecimalField(max_digits=5, decimal_places=2)
 	price_before    = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
 	image           = models.FileField()
+	sizes			= JSONField(null=True, blank=True)
+	images			= JSONField(null=True, blank=True)
+	images_3d		= JSONField(null=True, blank=True)
 	# created 		= models.DateTimeField(auto_now_add=True, auto_now=False, null=True, blank=True)
 	# updated 		= models.DateTimeField(auto_now_add=False, auto_now=True, null=True, blank=True)
 	slug 			= models.CharField(max_length=200)
@@ -32,7 +34,11 @@ class Shoes(models.Model):
 # 	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
 # 	image = models.FileField()
 
-class Shoes_size(models.Model):
-	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
-	size  = models.CharField(max_length=15)
-	stock = models.BooleanField()
+# class Shoes_size(models.Model):
+# 	shoes = models.ForeignKey(Shoes, related_name='sizes', on_delete = models.CASCADE)
+# 	size  = models.CharField(max_length=15)
+# 	stock = models.BooleanField()
+
+
+	# def __unicode__(self):
+	# 	return '%d: %s' % (self.stock, self.size)

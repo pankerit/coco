@@ -8,7 +8,8 @@ from .serializers import ShoesSerializer
 # class ShoesView(viewsets.ReadOnlyModelViewSet)
 class ShoesView(viewsets.ModelViewSet):
 	queryset = Shoes.objects.all()
-	serializer_class =ShoesSerializer
+	serializer_class = ShoesSerializer
+
 
 
 def home(request):
@@ -16,7 +17,7 @@ def home(request):
 	return render(request, 'home.html')
 
 def shoes(request):
-	shoes_list = Shoes.objects.all()[:100]
+	# shoes_list = Shoes.objects.all()[:100]
 
 	return render(request, 'catalog.html', locals())
 
