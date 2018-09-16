@@ -349,6 +349,18 @@ a, a:link, a:visited {
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.8px; }
+  .menu__filter {
+    cursor: pointer;
+    box-shadow: 0 0 3px rgba(0, 0, 1, 0.35);
+    background-color: #f85c5e;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    padding: 1.2rem 2rem;
+    border-radius: 2rem; }
 
 .left__block {
   box-sizing: border-box;
@@ -409,6 +421,12 @@ a, a:link, a:visited {
   text-align: center;
   margin-top: 2rem;
   transition: all 0.2s; }
+  /* .productBox:hover {
+    transform: translateY(-0.2rem); }
+    .productBox:hover .like,
+    .productBox:hover .addToCart {
+      display: flex;
+      opacity: 0.7; } */
   .productBox__img {
     flex-grow: 1;
     background-size: cover;

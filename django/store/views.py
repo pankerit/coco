@@ -1,25 +1,35 @@
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 from .models import Shoes
 from rest_framework import viewsets
-from .serializers import ShoesSerializer
+
 
 # Create your views here.
 # class ShoesView(viewsets.ReadOnlyModelViewSet)
-class ShoesView(viewsets.ModelViewSet):
-	queryset = Shoes.objects.all()
-	serializer_class = ShoesSerializer
-
-
 
 def home(request):
 	
 	return render(request, 'home.html')
 
 def shoes(request):
-	# shoes_list = Shoes.objects.all()[:100]
-
-	return render(request, 'catalog.html', locals())
+	shoes_list = Shoes.objects.all()
+	# get all brands
+	brands = []
+	for a in shoes_list:
+		if not a.brand in brands:
+			brands.append(a.brand)
+	print(brands)
+	# get all brands
+	paginator = Paginator(shoes_list, 27)
+	page = request.GET.get('page')
+	# name = request.GET.get('shoes')
+	shoes_list = paginator.get_page(page)
+	context = {
+		'shoes_list': shoes_list,
+		'brands': brands
+	}
+	return render(request, 'catalog.html', context)
 
 #def smartphone(request, slug):
 #	smartphone = get_object_or_404(Smartphone, slug=slug)
