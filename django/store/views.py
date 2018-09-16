@@ -13,17 +13,23 @@ def home(request):
 	return render(request, 'home.html')
 
 def shoes(request):
-	shoes_list = Shoes.objects.all()
+	all_list = Shoes.objects.all()
+	name = request.GET.get('brand')
+	name = name.split(',')
+	print(name)
+	if name:
+		shoes_list = Shoes.objects.filter(brand__in=name)
+	else:
+		shoes_list = all_list
 	# get all brands
+
+
 	brands = []
-	for a in shoes_list:
+	for a in all_list:
 		if not a.brand in brands:
 			brands.append(a.brand)
-	print(brands)
-	# get all brands
 	paginator = Paginator(shoes_list, 27)
 	page = request.GET.get('page')
-	# name = request.GET.get('shoes')
 	shoes_list = paginator.get_page(page)
 	context = {
 		'shoes_list': shoes_list,
@@ -31,13 +37,27 @@ def shoes(request):
 	}
 	return render(request, 'catalog.html', context)
 
-#def smartphone(request, slug):
-#	smartphone = get_object_or_404(Smartphone, slug=slug)
-#	context = {
-#		'brand': smartphone.brand,
-#		'name': smartphone.name,
-#	}
-#	return render(request, 'ipro/smartphone_detail.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #def smartphones(request):
 #	smartphone = get_object_or_404(Smartphone, slug='samsung-galaxy-s9')
