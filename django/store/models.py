@@ -27,7 +27,7 @@ class Shoes_360(models.Model):
 	image = models.FileField()
 
 class Shoes_size(models.Model):
-	shoes = models.ForeignKey(Shoes, related_name='sizes', on_delete = models.CASCADE)
+	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
 	size  = models.CharField(max_length=15)
 	stock = models.BooleanField()
 

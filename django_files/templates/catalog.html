@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'sass/catalog.css' %}">
     <title>CACA</title>
 </head>
 <body>
@@ -111,7 +111,7 @@
                 <div class="menu__brandsBox">
                     {% for brand in brands %}
                     <div class="menu__brandElement">
-                        <div class="menu__brandCheckBox"></div>
+                        <div class="menu__brandCheckBox {% if brand in brandFilter %} active {% endif %}"></div>
                         <div class="menu__brandName">{{brand}}</div>
                     </div>
                     {% endfor %}

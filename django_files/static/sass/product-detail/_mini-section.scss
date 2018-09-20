@@ -1,0 +1,28 @@
+.pathSection{
+    height: 5rem;
+    background-color: $colorGrey-1;
+}
+.path{
+    @include wrapper()
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    li{
+        height: 2.5rem;
+        width: 2.5rem;
+        line-height: 2.5rem;
+        color: $colorBlack-2;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        &:nth-child(2n+2){
+            height: 2rem;
+            width: 2rem;
+            fill: $colorActive;
+        }
+        &:not(:last-child){
+            margin-right: 1rem;
+        }
+    }
+}

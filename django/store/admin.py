@@ -1,17 +1,17 @@
 from django.contrib import admin
-from .models import Shoes
+from .models import Shoes, Shoes_size, Shoes_images, Shoes_360
 
 # Register your models here.
 
-# class Shoes_imagesInline(admin.TabularInline):
-# 	model = Shoes_images
-# 	extra = 0
-# class Shoes_360Inline(admin.TabularInline):
-# 	model = Shoes_360
-# 	extra = 0
-# class Shoes_sizeInline(admin.TabularInline):
-# 	model = Shoes_size
-# 	extra = 0
+class Shoes_imagesInline(admin.TabularInline):
+	model = Shoes_images
+	extra = 0
+class Shoes_360Inline(admin.TabularInline):
+	model = Shoes_360
+	extra = 0
+class Shoes_sizeInline(admin.TabularInline):
+	model = Shoes_size
+	extra = 0
 class ShoesAdmin(admin.ModelAdmin):
 	#list_display = [field.name for field in Smartphone._meta.fields] le arate pe toate
 	# list_display = [ 'brand', 'name', 'created' ]
@@ -22,3 +22,4 @@ class ShoesAdmin(admin.ModelAdmin):
 		model = Shoes
 
 admin.site.register(Shoes, ShoesAdmin)
+admin.site.register(Shoes_size)

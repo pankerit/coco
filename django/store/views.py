@@ -1,7 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
-from .models import Shoes
+from .models import Shoes, Shoes_size
 from rest_framework import viewsets
 
 
@@ -14,13 +14,16 @@ def home(request):
 
 def shoes(request):
 	all_list = Shoes.objects.all()
-	name = request.GET.get('brand')
-	name = name.split(',')
-	print(name)
-	if name:
-		shoes_list = Shoes.objects.filter(brand__in=name)
-	else:
+	size_list = Shoes_size.objects.filter(stock=True)
+	try:
+		brandFilter = request.GET.get('brand')
+		brandFilter = brandFilter.split(',')
+		print(brandFilter)
+		if brandFilter:
+			shoes_list = Shoes.objects.filter(brand__in=brandFilter)
+	except: 
 		shoes_list = all_list
+	
 	# get all brands
 
 
@@ -33,10 +36,14 @@ def shoes(request):
 	shoes_list = paginator.get_page(page)
 	context = {
 		'shoes_list': shoes_list,
-		'brands': brands
+		'brands': brands,
+		'brandFilter': brandFilter
 	}
 	return render(request, 'catalog.html', context)
 
+
+def product(request):
+	return render(request, 'product-detail.html')
 
 
 

@@ -1,0 +1,38 @@
+.product{
+    @include wrapper();
+    margin-top: 8rem;
+    height: 200px;
+    &__images{
+        @include col()
+        @include size(7)
+        height: 500px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__img{
+        width: calc(80% - 5px);
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &__slider{
+        width: calc(20% - 5px);
+        height: 100%;
+        &-image{
+            height: 92px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        &-image:not(:last-child){
+            margin-bottom: 1rem;
+        }
+    }
+    &__info{
+        @include col()
+        @include size(5)
+        background-color: red;
+        height: 200px;
+    }
+}
