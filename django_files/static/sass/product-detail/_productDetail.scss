@@ -1,38 +1,37 @@
 .product{
     @include wrapper();
-    margin-top: 8rem;
-    height: 200px;
-    &__images{
-        @include col()
-        @include size(7)
-        height: 500px;
+    margin-top: 5rem;
+}
+.product__image{
+    @include col();
+    @include size(7);
+    border: solid 1px $colorBlack;
+    height: 55rem;
+    display: flex;
+    .slider{
         display: flex;
-        justify-content: space-between;
-    }
-    &__img{
-        width: calc(80% - 5px);
-        height: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    &__slider{
-        width: calc(20% - 5px);
-        height: 100%;
-        &-image{
-            height: 92px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1rem;
+        &__img{
+            width: 10rem;
+            height: 10rem;
             background-size: cover;
-            background-repeat: no-repeat;
             background-position: center;
-        }
-        &-image:not(:last-child){
-            margin-bottom: 1rem;
+            background-repeat: no-repeat;
+            border: solid 1px $colorBlack-3;
+            &:not(:last-child){
+                margin-bottom: 1rem;
+            }
         }
     }
-    &__info{
-        @include col()
-        @include size(5)
-        background-color: red;
-        height: 200px;
+    .img{
+
     }
+}
+.product__info{
+    @include col();
+    @include size(5);
+    background-color: #c2c2c2;
 }
