@@ -1,7 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
-from .models import Shoes, Shoes_size
+from .models import Shoes, Shoes_size, Shoes_images, Shoes_360
 
 
 # Create your views here.
@@ -46,9 +46,21 @@ def shoes(request):
 
 def product(request, slug):
 	shoes = get_object_or_404(Shoes, slug=slug)
-	# images = Shoes_images.objects.filter(shoes__slug=slug)
-	# size = Shoes_size.objects.filter(shoes__slug=slug)
-	return render(request, 'product-detail.html', locals())
+	get_name = shoes.name
+	shoes_filter_by_name = Shoes.objects.filter(name=get_name)
+	images = Shoes_images.objects.filter(shoes__slug=slug)
+	first_image = images[0].image
+	size = Shoes_size.objects.filter(shoes__slug=slug)
+	img_360 = Shoes_360.objects.filter(shoes__slug=slug)[0].image
+	context = {
+		'shoes': shoes,
+		'size_list': size,
+		'shoes_list': shoes_filter_by_name,
+		'images': images,
+		'first_image': first_image,
+		'img_360': img_360
+	}
+	return render(request, 'product-detail.html', context)
 
 
 

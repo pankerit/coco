@@ -54,12 +54,11 @@
         <div class="row">
             <div class="product__image">
                 <div class="slider">
-                    <div class="slider__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l.jpg)"></div>
-                    <div class="slider__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a1.jpg)"></div>
-                    <div class="slider__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a2.jpg)"></div>
-                    <div class="slider__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a3.jpg)"></div>
+                    {%for image in images%}
+                    <div class="slider__img" style="background-image: url({{image.image}})"></div>
+                    {%endfor%}
                 </div>
-                <div class="img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l.jpg)">
+                <div class="img" style="background-image: url({{ first_image }})">
                     <div class="product__360"><span>Vizualizare</span>
                         <div class="product__360--icon">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -151,31 +150,17 @@
                 <div class="product__price">${{shoes.price}}<span>{% if shoes.price_before %} ${{shoes.price_before}} {% endif %}</span></div>
                 <div class="product__colour">Culoare:</div>
                 <div class="product__pick-one--shoes">
+                {%for shoes in shoes_list%}
                     <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a1.jpg)"></div>
+                            <div class="pick-one__img" style="background-image: url({{shoes.image.url}})"></div>
                     </div>
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a2.jpg)"></div>
-                    </div>
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a3.jpg)"></div>
-                    </div>
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a2.jpg)"></div>
-                    </div>
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a1.jpg)"></div>
-                    </div>
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a1.jpg)"></div>
-                    </div>
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url(https://images.sportsdirect.com/images/products/12306116_l_a1.jpg)"></div>
-                    </div>
+                {%endfor%}
                 </div>
                 <div class="product__size">Marime:</div>
-                <div class="product__pick-one--size">
-                        <div class="pick-one__size">11.5(45.5)</div>
+                <div class="product__pick-one-block">
+                    {%for size in size_list%}
+                        <div class="product__pick-one-size">{{size.size}}</div>
+                    {%endfor%}
                 </div>
                 <div class="product__addToCart">Adauga in cos</div>
             </div>
@@ -184,11 +169,11 @@
     <section id="popup-360">
         <div class="popup-360__block">
             <div class="popup-360__header">
-                <h1 class="popup-360__title">Adidas Air Force</h1>
+                <h1 class="popup-360__title">{{shoes.brand}} {{shoes.name}}</h1>
                 <div class="popup-360__close"></div>
             </div>
             <div class="popup-360__body">
-                    <iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="https://md.sportsdirect.com/View360?cvid=12306116"></iframe>
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="{{img_360}}"></iframe>
             </div>
         </div>
     </section>

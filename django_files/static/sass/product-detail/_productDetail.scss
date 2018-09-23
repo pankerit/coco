@@ -57,7 +57,11 @@
         font-weight: 600;
         letter-spacing: 0.7px;
     }
-    &__pick-one--size{
+    &__pick-one-block{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__pick-one-size{
         display: flex;
         justify-content: center;
         align-items: center;
