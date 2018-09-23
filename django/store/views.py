@@ -2,7 +2,6 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 from .models import Shoes, Shoes_size
-from rest_framework import viewsets
 
 
 # Create your views here.
@@ -42,10 +41,14 @@ def shoes(request):
 	return render(request, 'catalog.html', context)
 
 
-def product(request):
-	return render(request, 'product-detail.html')
+# def product(request):
+# 	return render(request, 'product-detail.html')
 
-
+def product(request, slug):
+	shoes = get_object_or_404(Shoes, slug=slug)
+	# images = Shoes_images.objects.filter(shoes__slug=slug)
+	# size = Shoes_size.objects.filter(shoes__slug=slug)
+	return render(request, 'product-detail.html', locals())
 
 
 

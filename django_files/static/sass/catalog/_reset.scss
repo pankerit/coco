@@ -1,0 +1,10 @@
+@include reset();
+
+a {
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        display: inline-block; 
+    }
+}
