@@ -12,6 +12,11 @@ def home(request):
 	return render(request, 'home.html')
 
 def shoes(request):
+	# create session key
+	if not request.session.session_key:
+		request.session.create()
+	print(request.session.session_key)
+	# create session key
 	all_list = Shoes.objects.all()
 	size_list = Shoes_size.objects.filter(stock=True)
 	try:
@@ -50,8 +55,11 @@ def product(request, slug):
 	shoes_filter_by_name = Shoes.objects.filter(name=get_name)
 	images = Shoes_images.objects.filter(shoes__slug=slug)
 	first_image = images[0].image
-	size = Shoes_size.objects.filter(shoes__slug=slug)
-	img_360 = Shoes_360.objects.filter(shoes__slug=slug)[0].image
+	size = Shoes_size.objects.filter(shoes__slug=slug).filter(stock=True)
+	try:
+		img_360 = Shoes_360.objects.filter(shoes__slug=slug)[0].image
+	except:
+		img_360 = False
 	context = {
 		'shoes': shoes,
 		'size_list': size,

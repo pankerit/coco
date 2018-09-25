@@ -412,6 +412,10 @@ a, a:link, a:visited {
   border: solid 1px #000000;
 }
 
+.product__pick-one--shoes .pick-one__block.active {
+  border: solid 2px #f85c5e;
+}
+
 .product__pick-one--shoes .pick-one__img {
   height: 100%;
   width: 100%;
@@ -454,10 +458,15 @@ a, a:link, a:visited {
   font-size: 1.2rem;
   font-weight: 600;
   border: solid 1px gainsboro;
+  cursor: pointer;
 }
 
 .product__pick-one-size:hover {
   border: solid 1px #000000;
+}
+
+.product__pick-one-size.active {
+  border: solid 2px #f85c5e;
 }
 
 .product__addToCart {
@@ -471,6 +480,7 @@ a, a:link, a:visited {
   border-radius: .5rem;
   font-size: 1.2rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .product__image {
@@ -495,13 +505,16 @@ a, a:link, a:visited {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.product__image .slider [class^="slider__arrow"] {
+  height: 3rem;
+  fill: #f85c5e;
+  display: none;
+  cursor: pointer;
+  margin: 0 auto;
 }
 
 .product__image .slider__img {
@@ -511,10 +524,15 @@ a, a:link, a:visited {
   background-position: center;
   background-repeat: no-repeat;
   border: solid 1px gainsboro;
+  display: none;
 }
 
 .product__image .slider__img:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.product__image .slider__img.show {
+  display: block;
 }
 
 .product__image .slider__img.active {

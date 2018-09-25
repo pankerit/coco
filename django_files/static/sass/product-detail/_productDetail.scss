@@ -39,7 +39,10 @@
             border: solid 1px darken( $colorGrey-1, 10% );
             &:hover{
                 border: solid 1px $colorBlack; 
-            } 
+            }
+            &.active{
+                border: solid 2px $colorActive;
+            }
         }
         .pick-one__img{
             height: 100%;
@@ -72,9 +75,13 @@
         font-size: 1.2rem;
         font-weight: 600;
         border: solid 1px darken( $colorGrey-1, 10% );
+        cursor: pointer;
         &:hover{
             border: solid 1px $colorBlack; 
         } 
+        &.active{
+            border: solid 2px $colorActive;
+        }
     }
     &__addToCart{
         align-self: center;
@@ -85,6 +92,7 @@
         border-radius: .5rem;
         font-size: 1.2rem;
         font-weight: 600;
+        cursor: pointer;
     }
 
 }
@@ -97,9 +105,15 @@
     .slider{
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         margin-left: 1rem;
+        margin-top: 1rem;
+        [class^="slider__arrow"]{
+            height: 3rem;
+            fill: $colorActive;
+            display: none;
+            cursor: pointer;
+            margin: 0 auto;
+        }
         &__img{
             width: 10rem;
             height: 10rem;
@@ -107,8 +121,12 @@
             background-position: center;
             background-repeat: no-repeat;
             border: solid 1px darken( $colorGrey-1, 10% );
+            display: none;
             &:not(:last-child){
                 margin-bottom: 1rem;
+            }
+            &.show{
+                display: block;
             }
         }
         &__img.active{

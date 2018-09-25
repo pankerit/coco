@@ -31,6 +31,11 @@ class Shoes_size(models.Model):
 	size  = models.CharField(max_length=15)
 	stock = models.BooleanField()
 
+class Post_cart(models.Model):
+	shoes = models.ForeignKey(Shoes, on_delete = models.CASCADE)
+	sessionid = models.CharField(max_length=40)
+	size  = models.CharField(max_length=15)
+
 
 	# def __unicode__(self):
 	# 	return '%d: %s' % (self.stock, self.size)

@@ -54,11 +54,14 @@
         <div class="row">
             <div class="product__image">
                 <div class="slider">
+                        <svg class="slider__arrow--up" style="margin-bottom: 5px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 256c0-114.875-93.125-208-208-208S48 141.125 48 256s93.125 208 208 208 208-93.125 208-208zm-112 32H160l96-96 96 96z"/></svg> 
                     {%for image in images%}
                     <div class="slider__img" style="background-image: url({{image.image}})"></div>
                     {%endfor%}
+                        <svg class="slider__arrow--down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.125 48 48 141.125 48 256s93.125 208 208 208 208-93.125 208-208S370.875 48 256 48zm0 272l-96-96h192l-96 96z"/></svg>  
                 </div>
                 <div class="img" style="background-image: url({{ first_image }})">
+                    {%if img_360%}
                     <div class="product__360"><span>Vizualizare</span>
                         <div class="product__360--icon">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -143,16 +146,17 @@
                             </svg>
                         </div class="product__360--icon">
                     </div>
+                    {%endif%}
                 </div>
             </div>
-            <div class="product__info">
+            <div class="product__info" data-id="{{shoes.shoes_id}}">{% csrf_token %}
                 <h1 class="product__title">{{shoes.brand}} {{shoes.name}}</h1>
                 <div class="product__price">${{shoes.price}}<span>{% if shoes.price_before %} ${{shoes.price_before}} {% endif %}</span></div>
                 <div class="product__colour">Culoare:</div>
                 <div class="product__pick-one--shoes">
-                {%for shoes in shoes_list%}
-                    <div class="pick-one__block">
-                            <div class="pick-one__img" style="background-image: url({{shoes.image.url}})"></div>
+                {%for el in shoes_list%}
+                    <div class="pick-one__block {% if el.shoes_id == shoes.shoes_id %}active{%endif%}"">
+                            <a href="{% url 'detail' slug=el.slug %}" class="pick-one__img" style="background-image: url({{el.image.url}})"></a>
                     </div>
                 {%endfor%}
                 </div>

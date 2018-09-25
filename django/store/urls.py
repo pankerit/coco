@@ -1,5 +1,5 @@
 from django.urls import path, include
-from . import views
+from . import views, api
 
 
 
@@ -9,7 +9,7 @@ urlpatterns = [
     path('shoes', views.shoes, name='shoes'),
     # path('detail', views.product, name='product-detail'),
     path('detail/<slug:slug>/', views.product, name='detail'),
-    
+    path('post_cart', api.post_cart, name='post_cart')
     
     
     
