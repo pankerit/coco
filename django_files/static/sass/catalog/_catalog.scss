@@ -296,4 +296,50 @@
         }
     }
 }
+.pagination{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 5rem 0;
+    &__arrow{
+        width: 2rem;
+        fill: $colorBlack-3;
+        margin: auto 1rem;
+        cursor: pointer;
+
+        &:hover{
+            fill: $colorActive;
+        }
+        &.prev{
+            transform: rotate(180deg);
+        }
+    }
+    .pages{
+        display: flex;
+        .page{
+            color: $colorBlack-3;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-align: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            border: 2px solid $colorGrey-2;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+            &:hover{
+                background-color: $colorGrey-2; 
+            }
+            &.show{
+                display: block;
+                margin: 0 1rem;
+            }
+            &.active{
+                background-color: $colorActive;
+                color: $colorWhite;
+            } 
+        }
+    }
+}
 

@@ -115,22 +115,6 @@
                         <div class="menu__brandName">{{brand}}</div>
                     </div>
                     {% endfor %}
-                    <!-- <div class="menu__brandElement">
-                        <div class="menu__brandCheckBox"></div>
-                        <div class="menu__brandName">Adidas</div>
-                    </div>
-                    <div class="menu__brandElement">
-                        <div class="menu__brandCheckBox"></div>
-                        <div class="menu__brandName">Armani</div>
-                    </div>
-                    <div class="menu__brandElement">
-                        <div class="menu__brandCheckBox"></div>
-                        <div class="menu__brandName">Babette</div>
-                    </div>
-                    <div class="menu__brandElement">
-                        <div class="menu__brandCheckBox"></div>
-                        <div class="menu__brandName">Calvin klein</div>
-                    </div> -->
                 </div>
                 <h2 class="menu__h2">Colors</h2>
                 <div class="menu__filter">Filter</div>
@@ -167,21 +151,17 @@
                         <!-- {% endblock content %} -->
                     </div>
                     <div class="pagination">
-                        <span class="step-links">
-                            {% if shoes_list.has_previous %}
-                                <a href="?page=1">&laquo; first</a>
-                                <a href="?page={{ shoes_list.previous_page_number }}">previous</a>
-                            {% endif %}
-                    
-                            <span class="current">
-                                Page {{ shoes_list.number }} of {{ shoes_list.paginator.num_pages }}.
-                            </span>
-                    
-                            {% if shoes_list.has_next %}
-                                <a href="?page={{ shoes_list.next_page_number }}">next</a>
-                                <a href="?page={{ shoes_list.paginator.num_pages }}">last &raquo;</a>
-                            {% endif %}
-                        </span>
+                        <div class="pagination__arrow prev">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"/></svg>
+                        </div>
+                        <ul class="pages">
+                            {% for num in shoes_list.paginator.page_range %}
+                            <li class="page {%if shoes_list.number == num%}active{%endif%}">{{ num }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="pagination__arrow next">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"/></svg>
+                        </div>
                     </div>
 
                     <!-- <div class="productBox">

@@ -761,6 +761,67 @@ a, a:link, a:visited {
   font-size: 1.4rem;
 }
 
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin: 5rem 0;
+}
+
+.pagination__arrow {
+  width: 2rem;
+  fill: #787878;
+  margin: auto 1rem;
+  cursor: pointer;
+}
+
+.pagination__arrow:hover {
+  fill: #f85c5e;
+}
+
+.pagination__arrow.prev {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.pagination .pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pagination .pages .page {
+  color: #787878;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  border: 2px solid #ededed;
+  border-radius: 50%;
+  display: none;
+  cursor: pointer;
+}
+
+.pagination .pages .page:hover {
+  background-color: #ededed;
+}
+
+.pagination .pages .page.show {
+  display: block;
+  margin: 0 1rem;
+}
+
+.pagination .pages .page.active {
+  background-color: #f85c5e;
+  color: #ffffff;
+}
+
 *,
 *::after,
 *::before {
