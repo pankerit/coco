@@ -9,7 +9,9 @@ urlpatterns = [
     path('shoes', views.shoes, name='shoes'),
     # path('detail', views.product, name='product-detail'),
     path('detail/<slug:slug>/', views.product, name='detail'),
-    path('post_cart', api.post_cart, name='post_cart')
+    path('cart', views.cart, name='cart'),
+    path('post_cart', api.post_cart, name='post_cart'),
+    path('post_cart_remove', api.post_cart_remove, name='post_cart_remove'),
     
     
     

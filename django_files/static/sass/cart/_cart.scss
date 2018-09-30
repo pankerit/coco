@@ -1,0 +1,155 @@
+.cart-header{
+    background-color: $colorActive;
+    .container{
+        @include wrapper();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 12.8rem;
+    }
+}
+.sign-in{
+    width: 130px;
+    background-color: $colorWhite;
+    padding: 1.2rem 0;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__icon{
+        background: url(../../img/sign-in.png) no-repeat;
+        background-size: cover;
+        width: 3rem;
+        height: 2rem;
+        margin-right: 1.5rem;
+    }
+    &__title{
+    color: $colorBlack-1;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    }
+}
+.logo{
+    color: $colorBlack-1;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    span{color: $colorWhite}
+}
+.cart{
+    background-color: $colorBlack-1;
+    padding: 1.2rem 2rem;
+    border-radius: 3rem;
+    display: flex;
+    align-items: center;
+    &__icon{
+        width: 2.2rem;
+        height: 2.2rem;
+        fill: $colorWhite;
+        margin-right: 5px;
+    }
+    &__title{
+        color: $colorWhite;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.9px;
+    }
+}
+.shopping-bag{
+    @include wrapper-full();
+}
+.wrapper{
+    @include wrapper();
+    margin-top: 6rem;
+}
+.setProduct{
+    @include row-flex();
+    color: $colorBlack-1;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.35px;
+    padding: 6rem 0;
+    &__name{
+        @include col();
+        @include size(2);
+        @include shift-right(3);
+    }
+    &__price{
+        @include col();
+        @include size(2);
+    }
+    &__quantity{
+        @include col();
+        @include size(2);
+    }
+    &__total-price{
+        @include col();
+        @include size(2);
+    }
+}
+.product{
+    @include row-flex();
+    padding: 3rem 0;
+    align-items: center;
+    color: $colorBlack-1;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    position: relative;
+    &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background-color: $colorGrey-2;
+        top: 0;
+    }
+    &__data{
+        @include col();
+        @include size(5);
+        display: flex;
+        align-items: center;     
+    }
+    &__img{
+        width: 10rem;
+        height: 10rem;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &__name{
+        margin-left: 1rem;
+        max-width: 30rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    &__price{
+        @include col();
+        @include size(2);
+    }
+    &__quantity{
+        @include col();
+        @include size(2);
+    }
+    &__total-price{
+        @include col();
+        @include size(2);
+    }
+    &__remove{
+        @include col();
+        @include size(1);
+        span{
+            display: inline-block;
+            cursor: pointer;
+            font-size: 2rem;
+            color: $colorBlack-1;
+            &:hover{
+                color: $colorActive;
+            }
+        }
+        
+    }
+}

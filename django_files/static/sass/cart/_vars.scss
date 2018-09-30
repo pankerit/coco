@@ -1,0 +1,12 @@
+$colorWhite: #ffffff;
+$colorBlack: #000000;
+$colorBlack-1: #303030;
+$colorBlack-2: #404040;
+$colorBlack-3: #787878;
+$colorActive: #f85c5e;
+$colorGrey-1: #f5f5f5;
+$colorGrey-2: #ededed;
+
+.row{
+    @include row-flex();
+}

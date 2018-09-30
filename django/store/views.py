@@ -1,7 +1,7 @@
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
-from .models import Shoes, Shoes_size, Shoes_images, Shoes_360
+from .models import Shoes, Shoes_size, Shoes_images, Shoes_360, Post_cart
 
 
 # Create your views here.
@@ -66,9 +66,24 @@ def product(request, slug):
 		'shoes_list': shoes_filter_by_name,
 		'images': images,
 		'first_image': first_image,
-		'img_360': img_360
+		'img_360': img_360,
 	}
 	return render(request, 'product-detail.html', context)
+def cart(request):
+	session_key = request.session.session_key
+	cart = Post_cart.objects.filter(sessionid=session_key)
+	for product in cart:
+		shoes_filter = Shoes.objects.filter(post_cart__shoes_id=product.shoes_id)
+		product.price = shoes_filter[0].price
+		product.slug  = shoes_filter[0].slug
+		product.image = shoes_filter[0].image
+		product.name = shoes_filter[0].name
+		product.brand = shoes_filter[0].brand
+	context = {
+		'cart': cart,
+	}
+
+	return render(request, 'cart.html', context)
 
 
 

@@ -41,7 +41,7 @@ $(function(){
             data: data,
             success: function(data){
                 console.log('OK');
-                location.reload();
+                // location.reload();
             }
         })
 

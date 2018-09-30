@@ -12,7 +12,15 @@ def post_cart(request):
     shoes_id = data.get("shoes_id")
     size = data.get("size")
     shoes_id = Shoes.objects.filter(shoes_id=shoes_id)[0]
-    print(shoes_id)
     Post_cart.objects.create(shoes=shoes_id, sessionid=session_key, size=size)
     
     return JsonResponse(return_dict)
+
+def post_cart_remove(request):
+    return_dict = dict()
+    session_key = request.session.session_key
+    data = request.POST
+    shoes_id = data.get("shoes_id")
+    Post_cart.objects.filter(id=shoes_id).delete()
+    print(shoes_id)
+    return JsonResponse(dict())
