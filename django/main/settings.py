@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    # 'rest_framework',
     'store',
 ]
 
@@ -78,13 +78,23 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'coco',
-        'USER': 'postgres',
+        'NAME': '3dshop',
+        'USER': 'admin',
         'PASSWORD': 'co2st2ea2',
-        'HOST': '127.0.0.1',
+        'HOST': '104.248.23.149',
         'PORT': '5432',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'coco',
+#         'USER': 'postgres',
+#         'PASSWORD': 'co2st2ea2',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation

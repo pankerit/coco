@@ -1,0 +1,18 @@
+@import "vars";
+@import "mixin";
+@import "components";
+@import "smart-grid";
+@import "header";
+
+
+
+@include reset();
+body{
+	font-family: sans-serif;
+}
+a{
+	text-decoration: none;
+}
+// .debug{
+// 	@include debug(rgba(0,0,0,0.2), 1px solid #ee9)
+// }

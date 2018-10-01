@@ -1,0 +1,30 @@
+@import "smart-grid";
+@import "reset";
+@import "vars";
+@import "mixin";
+@import "components";
+@import "nav";
+@import "mini-section";
+@import "cart";
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.debug{
+	@include debug(rgba(0,0,0,0.2), 1px solid #ee9)
+}

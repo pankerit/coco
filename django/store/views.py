@@ -11,7 +11,7 @@ def home(request):
 	
 	return render(request, 'home.html')
 
-def shoes(request):
+def catalog(request):
 	# create session key
 	if not request.session.session_key:
 		request.session.create()

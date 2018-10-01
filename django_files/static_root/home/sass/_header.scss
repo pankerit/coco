@@ -1,0 +1,223 @@
+.header{
+    position: relative;
+    max-width: 1920px;
+    height: calc(100vh - 150px);
+    padding: 75px 60px;
+    margin: 0 auto;
+    background: url(home/img/bg.jpg) center;
+    background-size: cover;
+    overflow: hidden;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    &__logo{
+        background: url(home/img/logo.png);
+        width: 39px;
+        height: 46px;
+    }
+    &__menu{
+        display: flex;
+        justify-content: space-between;
+        width: 493px;
+    }
+    &__list{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 263px;
+        a{
+            color: $colorWhite;
+            font-family: "Fjalla One";
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+    }
+    &__search{
+        color: $colorWhite;
+        font-size: 18px;
+    }
+    &__shopping-cart{
+        color: $colorWhite;
+        font-size: 18px;
+    }
+    &__hamburger-menu{
+        position: relative;
+        cursor: pointer;
+        width: 16px;
+        height: 14px;
+        
+    }
+}
+
+// start slider
+.slider{
+    @include wrapper();
+    position: relative;
+    margin-top: 285px;
+    margin-bottom: 50px;
+    &__img{
+        max-width: 568px;
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-60%);   
+    }
+    &__logo{
+        width: 70px;
+        fill: $colorWhite;  
+    }
+    &__title{
+        max-width: 850px;
+        background-image: linear-gradient(66deg, #98eab5 0%, #92bd98 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        margin-left: -10px;
+        margin-top: 5px;
+        color: transparent;
+        font-family: "Fjalla One";
+        font-size: 140px;
+        font-weight: 400;
+        text-transform: uppercase;
+        line-height: 1;
+        
+    }
+    &__price{
+        max-width: 155px;
+        color: $colorWhite;
+        font-family: "Fjalla One";
+        font-size: 33px;
+        font-weight: 400;
+        span{
+            font-family: "Lato";
+            font-size: 15px;
+            font-weight: 400; 
+            margin-right: 2px;
+        }
+    }
+    &__btns{
+        margin-top: 15px;
+    }
+    &__btn{
+        display: inline-block;
+        box-shadow: 0 0 7px rgba(255, 255, 255, 0.35);
+        border-radius: 5px;
+        border: 2px solid $colorWhite;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 15px;
+        font-family: "Fjalla One";
+        span{
+            margin-left: 4px;
+        }
+        &--1{
+            box-shadow: 0 0 7px rgba(255, 255, 255, 1);
+            padding: 14px 44px;
+            background-color: $colorWhite;
+            color: #522981;
+        }
+        &--2{
+            margin-left: 26px;
+            color: $colorWhite;
+            padding: 14px 46px;
+        }
+    }
+    &__dots{
+        display: flex;
+        position: absolute;
+        bottom: 77px;
+        left: 92px;
+        z-index: 1;
+    }
+    &__dots-line{
+        position: absolute;
+        bottom: 81.7px;
+        left: 92px;
+        height: 1px;
+        background-color: $colorWhite;
+        opacity: 0.6;
+    }
+    
+    &__dot{
+        background-color: #522981;
+        box-sizing: border-box;
+        width: 11px;
+        height: 11px;
+        border: 2px solid $colorWhite;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+        transition: all .5s;
+        &:not(:last-child){
+            margin-right: 25px;
+        }
+        &.active{
+           background-color: $colorWhite; 
+        }
+    }
+}
+#header-slider > div.owl-dots{
+    display: none;
+}
+
+.fadeOut {
+    animation-name: fadeOut;
+}
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.fadeIn {
+    animation-name: fadeIn;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+// end slider
+.social-icon{
+    position: absolute;
+    bottom: 75px;
+    right: 60px;
+    width: 18px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    svg{
+        fill: $colorWhite;
+        border-radius: 4px;
+    }   
+}

@@ -1,0 +1,48 @@
+.navBar{
+    height: 7.2rem;
+    @include wrapper();
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__middle{
+        display: flex;
+        justify-content: space-between;
+        flex-basis: 55.9rem;
+        margin: 0 auto;
+    }
+    &__link{
+        &,
+        &:link,
+        &:visited{
+            position: relative;
+            color: $colorBlack-1;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        &:before{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: $colorActive;
+            height: 0.3rem;
+            width: 0;
+            transform: translateY(0.2rem);
+            transition: all .4s
+        }
+        &:hover:before{
+            width: 100%;
+        }
+        &:hover{
+            transition: all .3s;
+            color: $colorActive;
+        }
+
+    }
+    &__search{       
+        width: 3rem;
+        height: 3.4rem;
+    }
+}

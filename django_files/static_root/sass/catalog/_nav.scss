@@ -1,0 +1,89 @@
+.navBar{
+    height: 11.2rem;
+    @include wrapper();
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__logo{
+        color:  $colorBlack-1;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    &__middle{
+        display: flex;
+        justify-content: space-between;
+        flex-basis: 55.9rem;
+        margin-right: -20rem;
+    }
+    &__link{
+        &,
+        &:link,
+        &:visited{
+            position: relative;
+            color: $colorBlack-1;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        &:before{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: $colorActive;
+            height: 0.3rem;
+            width: 0;
+            transform: translateY(0.2rem);
+            transition: all .4s
+        }
+        &:hover:before{
+            width: 100%;
+        }
+        &:hover{
+            transition: all .3s;
+            color: $colorActive;
+        }
+
+    }
+
+    &__right{
+        a:not(:last-child){
+            margin-right: 2rem;
+        }
+        display: flex;
+        svg{
+            fill: $colorBlack;
+        }
+    }
+    &__search{       
+        width: 3rem;
+        height: 3.4rem;
+    }
+    &__user{
+        width: 3rem;
+        height: 3.4rem;
+    }
+    &__cart{
+        width: 3rem;
+        height: 3.4rem;
+        position: relative;
+        #cartProducts{
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 1.9rem;
+            height: 1.9rem;
+            border-radius: 50%;
+            background-color: $colorActive;
+            // text color
+            color: $colorWhite;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.9rem;
+        }
+    }
+}
