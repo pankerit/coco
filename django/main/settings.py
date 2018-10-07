@@ -75,26 +75,26 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '3dshop',
-        'USER': 'admin',
-        'PASSWORD': 'co2st2ea2',
-        'HOST': '104.248.23.149',
-        'PORT': '5432',
-    }
-}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'coco',
-#         'USER': 'postgres',
+#         'NAME': '3dshop',
+#         'USER': 'admin',
 #         'PASSWORD': 'co2st2ea2',
-#         'HOST': '127.0.0.1',
+#         'HOST': '104.248.23.149',
 #         'PORT': '5432',
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'coco',
+        'USER': 'postgres',
+        'PASSWORD': 'co2st2ea2',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation

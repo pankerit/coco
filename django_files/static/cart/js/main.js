@@ -8,7 +8,7 @@ $(function() {
         data.shoes_id = shoes_id;
         data.csrfmiddlewaretoken = csrf_token;
         $.ajax({
-            url: '/shoes/post_cart_remove',
+            url: '/post_cart_remove',
             type: 'POST',
             data: data,
             success: function(data){

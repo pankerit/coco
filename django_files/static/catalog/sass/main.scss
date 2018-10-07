@@ -28,3 +28,19 @@ body {
 .debug{
 	@include debug(rgba(0,0,0,0.2), 1px solid #ee9)
 }
+
+@include to(1100px){
+    html{
+        font-size: 8px;
+    }
+}
+@include to(700px){
+    html{
+        font-size: 5px;
+    }
+}
+@include to(400px){
+    html{
+        font-size: 2px;
+    }
+}

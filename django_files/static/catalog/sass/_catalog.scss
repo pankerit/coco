@@ -228,8 +228,8 @@
     }
     &__img{
         flex-grow: 1;
-        background-size: cover;
         background: center no-repeat;
+        background-size: auto;
         position: relative;
         .like{
             position: absolute; 

@@ -36,7 +36,7 @@ $(function(){
         data.size = size;
         data.csrfmiddlewaretoken = csrf_token;
         $.ajax({
-            url: '/shoes/post_cart',
+            url: '/post_cart',
             type: 'POST',
             data: data,
             success: function(data){
