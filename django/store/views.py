@@ -12,36 +12,68 @@ def home(request):
 	return render(request, 'home.html')
 
 def catalog(request):
+	how_many_shoes_per_page = 42
 	# create session key
 	if not request.session.session_key:
 		request.session.create()
-	print(request.session.session_key)
-	# create session key
+	session_key = request.session.session_key
+
+
 	all_list = Shoes.objects.all()
-	size_list = Shoes_size.objects.filter(stock=True)
-	try:
-		brandFilter = request.GET.get('brand')
-		brandFilter = brandFilter.split(',')
-		print(brandFilter)
-		if brandFilter:
-			shoes_list = Shoes.objects.filter(brand__in=brandFilter)
-	except: 
+	# get shoes type(men, women, kids) lenght
+	shoes_men_lenght = len(all_list.filter(shoes_type='men'))
+	shoes_women_lenght = len(all_list.filter(shoes_type='women'))
+	shoes_kid_lenght = len(all_list.filter(shoes_type='kid'))
+	# size_list = Shoes_size.objects.filter(stock=True)
+
+	# filter
+	brandFilter = request.GET.get('brand')
+	minPrice = request.GET.get('minPrice')
+	maxPrice = request.GET.get('maxPrice')
+	if (brandFilter or minPrice or maxPrice):
 		shoes_list = all_list
-	
+		if brandFilter:
+			brandFilter = brandFilter.split(',')
+			shoes_list = shoes_list.filter(brand__in=brandFilter)
+		if (minPrice or maxPrice):
+			if not minPrice:
+				minPrice = 0
+			if not maxPrice:
+				maxPrice = 10000
+			shoes_list = shoes_list.filter(price__range=(minPrice, maxPrice))
+			# cu sablonul nu pot sa pun 2 conditii la jinja si imi arata None daca nu e nimic la price
+			if (maxPrice == 10000):
+				maxPrice = None
+	else: 
+		shoes_list = all_list
+	# get shoes list lenght
+	shoes_list_lenght = len(shoes_list)
 	# get all brands
-
-
 	brands = []
 	for a in all_list:
 		if not a.brand in brands:
 			brands.append(a.brand)
-	paginator = Paginator(shoes_list, 27)
+	paginator = Paginator(shoes_list, how_many_shoes_per_page)
 	page = request.GET.get('page')
 	shoes_list = paginator.get_page(page)
+	# get shoes shown lenght
+	shoes_list_shown = len(shoes_list)
+
+	# get lenght from cart
+	cart = Post_cart.objects.filter(sessionid=session_key)
+	cart_lenght = len(cart)
 	context = {
 		'shoes_list': shoes_list,
+		'shoes_list_lenght': shoes_list_lenght,
+		'shoes_list_shown': shoes_list_shown,
+		'shoes_men_lenght': shoes_men_lenght,
+		'shoes_women_lenght': shoes_women_lenght,
+		'shoes_kid_lenght': shoes_kid_lenght,
 		'brands': brands,
-		'brandFilter': brandFilter
+		'brandFilter': brandFilter,
+		'minPrice': minPrice,
+		'maxPrice': maxPrice,
+		'cart_lenght': cart_lenght,
 	}
 	return render(request, 'catalog.html', context)
 
@@ -50,6 +82,12 @@ def catalog(request):
 # 	return render(request, 'product-detail.html')
 
 def product(request, slug):
+	# unique key
+	session_key = request.session.session_key
+	# cart lenght
+	cart = Post_cart.objects.filter(sessionid=session_key)
+	cart_lenght = len(cart)
+
 	shoes = get_object_or_404(Shoes, slug=slug)
 	get_name = shoes.name
 	shoes_filter_by_name = Shoes.objects.filter(name=get_name)
@@ -67,6 +105,7 @@ def product(request, slug):
 		'images': images,
 		'first_image': first_image,
 		'img_360': img_360,
+		'cart_lenght': cart_lenght,
 	}
 	return render(request, 'product-detail.html', context)
 def cart(request):

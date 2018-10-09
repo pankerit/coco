@@ -1,7 +1,7 @@
 $(function() {
 	$('.menu__category').on('click', function() {
         $(this).toggleClass('active');
-        $(this).next().toggleClass('collaps');
+        // $(this).next().toggleClass('collaps');
     });
     $('.menu__brandCheckBox').on('click', function() {
         $(this).toggleClass('active');
@@ -21,12 +21,8 @@ $(function() {
     setPages(active_page);
     //pagination
 
-    let brands;
-    let sizes;
-    let prices;
-    let sorting;
-    let urlFilter;
-    let page;
+    let sizes, sorting, urlFilter, page;
+
 
     // go to next page
     $('.pages .page').on('click', function(){
@@ -39,10 +35,10 @@ $(function() {
 
     // funtion 
     function filterUrl(page=$('.pages .page.active').text()){
-        brands = []; sizes = []; prices = []; sorting = []; urlFilter = {};
+        brands = []; sizes = []; sorting = []; urlFilter = {};
         //page
         urlFilter.page = page;
-        //brand
+        // brand
         const brandList = document.querySelectorAll('.menu__brandElement');
         brandList.forEach(el=>{
             if (el.firstElementChild.classList.contains('active')){
@@ -50,6 +46,7 @@ $(function() {
                 urlFilter.brand = brands;
             }  
         })
+         
         //sizes
         const sizeList = document.querySelectorAll('.menu__size');
         sizeList.forEach(el=>{
@@ -59,15 +56,9 @@ $(function() {
            }
         })
         //prices
-        const priceList = document.querySelector('.menu__priceBox');
-        if (priceList.firstElementChild.value || priceList.lastElementChild.value){
-            if (priceList.firstElementChild.value) prices.push(priceList.firstElementChild.value)
-            else (prices.push('0'))
-            if (priceList.lastElementChild.value) prices.push(priceList.lastElementChild.value)
-            else (prices.push('0'))
-            prices = prices.join();
-            urlFilter.price = prices;
-        }
+        if ($('.menu__price').first().val()) urlFilter.minPrice = $('.menu__price').first().val()
+        if ($('.menu__price').last().val()) urlFilter.maxPrice = $('.menu__price').last().val()
+
         // return encodeQueryData(urlFilter)
         return encodeQueryData(urlFilter)
     }
@@ -85,7 +76,10 @@ $(function() {
         location.href = url
     }
 
-
+    // test
+    $('.tool__hideSidebar').on('click', ()=>{
+        if ($('.menu__category.active').data('type')) console.log($('.menu__category.active').data('type'))
+    })
 
 
 });

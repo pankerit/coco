@@ -394,6 +394,10 @@ a, a:link, a:visited {
   cursor: pointer;
 }
 
+.menu__category.active h3 {
+  color: #f85c5e;
+}
+
 .menu__category h3 {
   font-weight: inherit;
 }
